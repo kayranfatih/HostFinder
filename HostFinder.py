@@ -1,7 +1,7 @@
 #!/usr/bin/env
 
 import sys, getopt, logging
-logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
+logging.getLogger("scapy.runtime").setLevel(logging.ERROR) #suppress scapy warning message
 from scapy.all import *
 
 interface = "eth0"
@@ -35,7 +35,7 @@ def GetArgument():
 GetArgument()
 
 try :
-	
+
 	ans,unans=srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=scannableIP + "/" + scannableCIDR), timeout=3, iface=interface, verbose=0)
 
 	print "-"*41 + "\nInterface : " + interface + " " + "Range : " +scannableIP + "/" + scannableCIDR + "\n" + "-"*41
