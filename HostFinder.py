@@ -7,7 +7,7 @@ from scapy.all import *
 interface = "eth0"
 scannableIP = "192.168.0.0"
 scannableCIDR = "16"
-helpSection = ("HostFinder - Active ICMP Ping Scan Tool\n"
+helpSection = ("HostFinder - Active ARP Ping Scan Tool\n"
 			   "Written By : Fatih KAYRAN <kayranfatih@hotmail.com>\n\n" 
 			   "Usage Hostfinder [-i interface] [-r range ]\n"
 			   "-i interface : The interface in use\n"
