@@ -32,20 +32,22 @@ def GetArgument():
 			print helpSection
 			exit(0)
 
-GetArgument()
+if __name__ == '__main__': 
 
-try :
+	GetArgument()
 
-	ans,unans=srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=scannableIP + "/" + scannableCIDR), timeout=3, iface=interface, verbose=0)
+	try :
 
-	print "-"*41 + "\nInterface : " + interface + " " + "Range : " +scannableIP + "/" + scannableCIDR + "\n" + "-"*41
-	print " "*3 + "Mac Adress" + " "*6 + "IP Adress\n"
+		ans,unans=srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=scannableIP + "/" + scannableCIDR), timeout=3, iface=interface, verbose=0)
 
-	for s, r in ans : 
-		print r.sprintf("%Ether.src% %ARP.psrc%")
+		print "-"*41 + "\nInterface : " + interface + " " + "Range : " +scannableIP + "/" + scannableCIDR + "\n" + "-"*41
+		print " "*3 + "Mac Adress" + " "*6 + "IP Adress\n"
 
-except socket.error :
-	print "Invalid interface / IP"
+		for s, r in ans : 
+			print r.sprintf("%Ether.src% %ARP.psrc%")
 
-except ValueError :
-	print "Invalid IP/CIDR format (e.g 192.168.1.0/24)"
+	except socket.error :
+		print "Invalid interface / IP"
+
+	except ValueError :
+		print "Invalid IP/CIDR format (e.g 192.168.1.0/24)"
